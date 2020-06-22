@@ -1,0 +1,5 @@
+user [email,type]
+doctors []
+patient [phone,national-id,address]
+patient_diagnostic []
+cases [user_id,seen,]
