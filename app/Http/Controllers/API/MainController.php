@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
 
 class MainController extends Controller
 {
@@ -21,15 +23,9 @@ class MainController extends Controller
             $user = Auth::user();
             $user->api_token = str_random(60);
             $user->save();
-            $user_roles = [];
-            foreach($user->roles as $index=>$role){
-                $user_roles[$index] = $role->id;
-            }
-
             return response()->json([
                 'status_code' => '200',
                 'api_token' => $user->api_token,
-                'user_roles' => $user_roles,
             ],200);
         }
 
